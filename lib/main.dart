@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/features/auth/pages/login_page.dart';
 import 'package:frontend/features/auth/pages/signup_page.dart';
 
 void main() {
@@ -27,10 +28,25 @@ class MyApp extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(10),
           ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
+              color: Colors.red,
+              width: 3,
+            ),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.black,
+            minimumSize: const Size(double.infinity, 60),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)
+            ),
+          ),
         ),
         useMaterial3: true,
       ),
-      home: const SignupPage(),
+      home: const LoginPage(),
     );
   }
 }

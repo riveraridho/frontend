@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/features/auth/pages/login_page.dart';
+import 'package:frontend/features/auth/pages/signup_page.dart';
 
-class SignupPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static MaterialPageRoute route() => MaterialPageRoute(
-    builder: (context) => const SignupPage(),
+    builder: (context) => const LoginPage(),
   );
-  const SignupPage({super.key});
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    nameController.dispose();
     super.dispose();
   }
 
-  void signUpUser() {
+  void loginUser() {
     if(formKey.currentState!.validate()) {
 
     }
@@ -42,26 +40,13 @@ class _SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Sign Up Page',
+                'Login Page',
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold
                 )
               ),
               const SizedBox(height: 30),
-              TextFormField(
-                controller: nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Name field cannot be empty!";
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 15),
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -93,8 +78,8 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: signUpUser, 
-                child: const Text('SIGN UP', 
+                onPressed: loginUser,
+                child: const Text('LOGIN', 
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white
@@ -103,16 +88,16 @@ class _SignupPageState extends State<SignupPage> {
               ),
               const SizedBox(height: 20),
               GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(LoginPage.route());
+                onTap:() {
+                  Navigator.of(context).push(SignupPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: 'Already have an account? ',
+                    text: 'Don\'t have an account? ',
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: 'Sign In',
+                        text: 'Sign Up',
                         style: TextStyle(
                           fontWeight: FontWeight.bold
                         ),
